@@ -1,0 +1,25 @@
+#root { min-height: 100vh; }
+.app-shell { min-height: 100vh; background: radial-gradient(circle at 85% 0%, #dce9c7 0, transparent 34%), #f4f2eb; }
+.app-header, .app-nav, .app-content { width: min(1080px, calc(100% - 40px)); margin: 0 auto; }
+.app-header { display: flex; align-items: center; gap: 16px; padding: 42px 0 34px; }
+.brand-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #ee765c; color: #fff8ed; font-size: 25px; font-weight: 700; }
+.eyebrow { margin: 0 0 7px; color: #69756e; font: 500 11px/1 'DM Mono', monospace; letter-spacing: 1px; text-transform: uppercase; }
+.app-header h1, .page-heading h2 { margin: 0; color: #17211c; font-weight: 600; letter-spacing: -1.4px; }
+.app-header h1 { font-size: clamp(28px, 4vw, 42px); }
+.app-nav { display: flex; gap: 6px; border-bottom: 1px solid #cbd1c4; overflow-x: auto; }
+.app-nav a { padding: 12px 16px; color: #69756e; text-decoration: none; white-space: nowrap; }
+.app-nav a.active { color: #17211c; border-bottom: 3px solid #ee765c; font-weight: 600; }
+.app-content { padding: 56px 0 100px; }
+.page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.page-heading h2 { font-size: clamp(34px, 5vw, 56px); }
+.page-heading p:not(.eyebrow) { margin: 10px 0 0; color: #69756e; }
+.live-badge { padding: 8px 11px; border: 1px solid #b8c7a9; border-radius: 999px; color: #536940; font: 500 11px 'DM Mono', monospace; white-space: nowrap; }
+.resource-list { overflow: hidden; border-top: 1px solid #cbd1c4; }
+.resource-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 21px 4px; border-bottom: 1px solid #cbd1c4; }
+.resource-row div { display: grid; gap: 5px; }
+.resource-row strong { color: #17211c; font-size: 17px; }
+.resource-row span { color: #69756e; font-size: 14px; }
+.resource-row b { color: #ee765c; font: 500 13px 'DM Mono', monospace; white-space: nowrap; }
+.empty-state, .error-message { padding: 28px 4px; color: #69756e; }
+.error-message { color: #a64635; }
+@media (max-width: 600px) { .app-header, .app-nav, .app-content { width: min(100% - 28px, 1080px); } .app-header { padding-top: 28px; } .page-heading { align-items: flex-start; flex-direction: column; } .live-badge { align-self: flex-start; } }
