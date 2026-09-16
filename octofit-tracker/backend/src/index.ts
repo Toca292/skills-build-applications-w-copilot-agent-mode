@@ -1,14 +1,24 @@
-import express from 'express'
+import app from './app.js'
+import { connectDatabase, disconnectDatabase } from './config/database.js'
 
-const app = express()
 const port = Number(process.env.PORT ?? 8000)
 
-app.use(express.json())
+async function startServer() {
+  await connectDatabase()
+  const server = app.listen(port, () => {
+    console.log(`OctoFit Tracker API listening on port ${port}`)
+  })
 
-app.get('/api/health', (_request, response) => {
-  response.json({ status: 'ok' })
-})
+  const shutdown = async () => {
+    server.close()
+    await disconnectDatabase()
+  }
 
-app.listen(port, () => {
-  console.log(`OctoFit Tracker API listening on port ${port}`)
+  process.once('SIGINT', shutdown)
+  process.once('SIGTERM', shutdown)
+}
+
+startServer().catch((error) => {
+  console.error('Unable to start OctoFit Tracker API:', error)
+  process.exitCode = 1
 })
